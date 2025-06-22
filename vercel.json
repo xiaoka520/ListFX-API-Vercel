@@ -8,24 +8,25 @@
   "routes": [
     {
       "src": "/",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
       "dest": "/api/index.php"
     },
     {
       "src": "/api",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      },
       "dest": "/api/index.php"
     },
     {
       "src": "/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      },
       "dest": "/api/index.php"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
     }
   ]
 }
