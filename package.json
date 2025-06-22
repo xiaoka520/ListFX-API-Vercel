@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "vercel build"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
