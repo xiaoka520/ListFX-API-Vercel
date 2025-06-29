@@ -33,9 +33,6 @@
       }
     }
   ],
-  "regions": ["hkg1"],  // 选择香港节点
-  "cache": [],  // 明确禁用所有缓存
-  "env": {
-    "NO_CACHE": "1"
-  }
+  "regions": ["hkg1"],
+  "cache": []
 }
