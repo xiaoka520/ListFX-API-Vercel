@@ -1,11 +1,11 @@
 {
-  "name": "listfx-image-api",
+  "name": "listfx-image-api-nocache",
   "version": "1.0.0",
-  "description": "API for random image redirection with jsDelivr CDN",
+  "description": "完全无缓存的随机图片API",
   "main": "api/index.js",
   "scripts": {
     "start": "node api/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"测试: 运行 curl -I http://localhost:3000\" && exit 0"
   },
   "dependencies": {
     "node-fetch": "^2.6.7"
@@ -21,7 +21,7 @@
     "vercel",
     "api",
     "image",
-    "webp"
+    "nocache"
   ],
   "author": "FengXi",
   "license": "MIT"

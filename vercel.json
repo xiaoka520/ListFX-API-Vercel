@@ -11,16 +11,31 @@
       "src": "/",
       "dest": "/api/index.js",
       "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Cache-Control": "public, max-age=3600"
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        "Pragma": "no-cache",
+        "Expires": "0",
+        "CDN-Cache-Control": "no-store",
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "src": "/api",
+      "dest": "/api/index.js",
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
       }
     },
     {
       "src": "/(.*)",
       "dest": "/api/index.js",
       "headers": {
-        "Access-Control-Allow-Origin": "*"
+        "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
       }
     }
-  ]
+  ],
+  "regions": ["hkg1"],  // 选择香港节点
+  "cache": [],  // 明确禁用所有缓存
+  "env": {
+    "NO_CACHE": "1"
+  }
 }
