@@ -1,25 +1,26 @@
 {
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.6.0", // 改为正确的0.6.0版本
-      "includeFiles": "photos.txt"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/",
+      "dest": "/api/index.js",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Cache-Control": "public, max-age=3600"
-      },
-      "dest": "/api/index.php"
+      }
     },
     {
       "src": "/(.*)",
+      "dest": "/api/index.js",
       "headers": {
         "Access-Control-Allow-Origin": "*"
-      },
-      "dest": "/api/index.php"
+      }
     }
   ]
 }
