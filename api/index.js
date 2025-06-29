@@ -55,17 +55,13 @@ module.exports = async (req, res) => {
     
     // ====== 处理图片链接 ======
     const links = content.split('\n')
-      .map(link => link.trim())
-      .filter(link => {
-        // 验证链接有效性
-        const isValid = link && 
-                      (link.startsWith('https://cdn.mengze.vip/gh/') ||
-                       link.startsWith('https://raw.githubusercontent.com/')) &&
-                      /\.webp($|\?)/i.test(link);
-        
-        if (!isValid && link) {
-          console.log(`无效链接跳过: ${link.substring(0, 100)}`);
-        }
+    .map(link => link.trim())
+    .filter(link => {
+      const isValid = link && 
+                  (link.startsWith('https://cdn.mengze.vip/gh/') &&
+                   link.includes('@master/img/')) &&
+                  /\.webp($|\?)/i.test(link);
+    
         return isValid;
       });
     
