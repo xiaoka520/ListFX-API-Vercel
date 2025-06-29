@@ -5,9 +5,8 @@ module.exports = async (req, res) => {
   try {
     // 设置响应头
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 'public, max-age=3600'); // 1小时缓存
+    res.setHeader('Cache-Control', 'public, max-age=3600');
     
-    // 图片列表来源
     const externalSource = 'https://raw.githubusercontent.com/xiaoka520/ListFX-API/main/photos.txt';
     const localFile = `${__dirname}/../photos.txt`;
     
@@ -56,18 +55,18 @@ module.exports = async (req, res) => {
       });
     }
     
-    // 处理图片链接
+    // 处理图片链接 - 使用国内镜像
     const links = content.split('\n')
       .map(link => link.trim())
       .filter(link => {
-        // 验证链接有效性
+        // 验证链接有效性 - 使用 cdn.mengze.vip
         const isValid = link && 
-                      (link.startsWith('https://cdn.jsdelivr.net/gh/') ||
+                      (link.startsWith('https://cdn.mengze.vip/gh/') ||
                        link.startsWith('https://raw.githubusercontent.com/')) &&
                       /\.webp($|\?)/i.test(link);
         
-        if (!isValid) {
-          console.log(`Invalid link skipped: ${link.substring(0, 50)}...`);
+        if (!isValid && link) {
+          console.log(`Invalid link skipped: ${link.substring(0, 100)}`);
         }
         return isValid;
       });
